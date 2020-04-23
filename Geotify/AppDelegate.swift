@@ -28,6 +28,11 @@
 
 import UIKit
 import CoreLocation
+import AppCenter
+import AppCenterAnalytics
+import AppCenterCrashes
+import AppCenterDistribute
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -38,6 +43,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions:[UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
     locationManager.delegate = self
     locationManager.requestAlwaysAuthorization()
+    
+    MSAppCenter.start("905d069d-bf28-41bc-96c4-e3d09a555cf1", withServices:[
+      MSAnalytics.self,
+      MSCrashes.self
+    ])
+    
+    MSAppCenter.start("905d069d-bf28-41bc-96c4-e3d09a555cf1", withServices: [MSDistribute.self])
     return true
   }
   

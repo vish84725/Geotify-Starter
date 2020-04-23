@@ -29,6 +29,8 @@
 import UIKit
 import MapKit
 import CoreLocation
+import AppCenter
+import AppCenterCrashes
 
 struct PreferencesKeys {
   static let savedItems = "savedItems"
@@ -43,6 +45,9 @@ class GeotificationsViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    MSAppCenter.start("905d069d-bf28-41bc-96c4-e3d09a555cf1", withServices:[
+      MSCrashes.self
+    ])
     
     locationManager.delegate = self
     locationManager.requestAlwaysAuthorization()
